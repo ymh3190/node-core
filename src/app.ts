@@ -1,12 +1,14 @@
 import { createServer, IncomingMessage, ServerResponse } from "http";
-import { blockAddrs, blockList } from "./blocklist";
+import { BlockList } from "net";
 
 const server = createServer();
 
 const signupPath = "/api/v1/auth/signup";
 const signinPath = "/api/v1/auth/signin";
-
 const blockPath = "/api/v1/blocks";
+
+const blockList = new BlockList();
+const blockAddrs: string[] = [];
 
 server.on("request", (req: IncomingMessage, res: ServerResponse) => {
   for (const blockAddr of blockAddrs) {
