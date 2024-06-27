@@ -1,8 +1,5 @@
 import { createServer, IncomingMessage, ServerResponse } from "http";
-import { BlockList } from "net";
-const blockList = new BlockList();
-
-const blockAddrs: string[] = [];
+import { blockAddrs, blockList } from "./blocklist";
 
 const server = createServer();
 
